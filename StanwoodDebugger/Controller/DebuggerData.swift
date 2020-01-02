@@ -88,7 +88,7 @@ class DebuggerData {
         if launcherItems.count > 0 {
             var items = [ScreenLauncherItem]()
             for item in launcherItems {
-                let screenLuancherItem = ScreenLauncherItem(title: item.title, viewControllerName: item.viewController)
+                let screenLuancherItem = ScreenLauncherItem(title: item.title, viewControllerName: item.viewControllerName)
                 items.append(screenLuancherItem)
             }
             screenLauncherItems = ScreenLauncherItems(items: items)
