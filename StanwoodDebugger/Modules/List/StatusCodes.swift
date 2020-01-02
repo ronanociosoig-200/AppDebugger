@@ -47,9 +47,9 @@ enum StatusCodes {
     var color: UIColor {
         switch self {
         case .c100: return UIColor.gray.withAlphaComponent(0.5)
-        case .c200: return UIColor(hex: "40C585")
+        case .c200: return UIColor(red: 98.0/255.0, green: 184.0/255.0, blue: 109.0/255.0, alpha: 1.0) //UIColor(hex: "40C585")
         case .c300: return UIColor(hex: "34DFFF")
-        case .c400: return UIColor(hex: "FC962A")
+        case .c400: return UIColor(red: 234.0/255.0, green: 69.0/255.0, blue: 69.0/255.0, alpha: 1.0) // UIColor(hex: "FC962A")
         case .c500: return UIColor(hex: "F83536")
         }
     }
