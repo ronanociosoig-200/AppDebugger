@@ -14,6 +14,7 @@ class ScreenLauncherCell: UITableViewCell, Fillable {
     func fill(with model: Model?) {
         guard let item = model as? ScreenLauncherItem else { return }
         self.item = item
-
+        
+        textLabel?.text = item.title
     }
 }
