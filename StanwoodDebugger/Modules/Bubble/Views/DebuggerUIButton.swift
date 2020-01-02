@@ -30,11 +30,13 @@ import StanwoodCore
 
 class DebuggerUIButton: UIButton {
     
+    static let buttonDiameter = 50
+    
     private enum Positions {
         case topLeft, topRight, centerLeft, centerRight, bottomLeft, bottomRight
         
         static var buttonSize: CGSize {
-            return CGSize(width: 65, height: 65)
+            return CGSize(width: DebuggerUIButton.buttonDiameter, height: DebuggerUIButton.buttonDiameter)
         }
         
         static func position(for point: CGPoint) -> Positions {
