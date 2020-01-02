@@ -25,9 +25,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         #if DEBUG
         debugger.errorCodesExceptions = [4097]
         debugger.isEnabled = true
+        debugger.setLauncherItems(items: makeLaunchItems())
         #endif
         
         return true
     }
+    
+    private func makeLaunchItems() -> [LauncherItem] {
+        let item = LauncherItem(title: "Success Template Cases", viewControllerName: "SuccessCaseTemplateTableViewController")
+        return [item]
+    }
 }
+
+
 
