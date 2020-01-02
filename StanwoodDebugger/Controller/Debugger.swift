@@ -142,6 +142,7 @@ public class StanwoodDebugger: Debugging {
     
     public func setLauncherItems(items: [LauncherItem]) {
         appData.launcherItems = items
+        appData.reloadLauncherItems()
     }
     
     @objc func applicationDidEnterBackground() {

@@ -54,6 +54,19 @@ class DebuggerData {
         return decoder
     }()
     
+    func reloadLauncherItems() {
+        if launcherItems.count > 0 {
+            var items = [ScreenLauncherItem]()
+            for item in launcherItems {
+                let screenLuancherItem = ScreenLauncherItem(title: item.title, viewControllerName: item.viewControllerName)
+                items.append(screenLuancherItem)
+            }
+            screenLauncherItems = ScreenLauncherItems(items: items)
+        } else {
+            screenLauncherItems = ScreenLauncherItems(items: [])
+        }
+    }
+    
     init() {
         if let items = try? Stanwood.Storage.retrieve(AnalyticItems.fileName, of: .json, from: .documents(customDirectory: nil), as: AnalyticItems.self) {
             analyticsItems = items 
@@ -85,18 +98,7 @@ class DebuggerData {
             crashItems = CrashItems(items: [])
         }
         
-        if launcherItems.count > 0 {
-            var items = [ScreenLauncherItem]()
-            for item in launcherItems {
-                let screenLuancherItem = ScreenLauncherItem(title: item.title, viewControllerName: item.viewControllerName)
-                items.append(screenLuancherItem)
-            }
-            screenLauncherItems = ScreenLauncherItems(items: items)
-        } else {
-            screenLauncherItems = ScreenLauncherItems(items: [])
-        }
-        
-        
+        screenLauncherItems = ScreenLauncherItems(items: [])
         
         NotificationCenter.default.addObservers(self, observers:
             Stanwood.Observer(selector: #selector(didReceiveAnalyticsItem(_:)), name: .DebuggerDidReceiveAnalyticsItem),
