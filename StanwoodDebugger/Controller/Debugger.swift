@@ -146,6 +146,7 @@ public class StanwoodDebugger: Debugging {
     
     private func configureStyle() {
         window.tintColor = Style.tintColor
+        debuggerViewController?.debuggerButton.backgroundColor = Style.tintColor
     }
     
     private func observeCrashes() {

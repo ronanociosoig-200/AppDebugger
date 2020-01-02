@@ -34,7 +34,7 @@ protocol DebuggerViewable: class {
 
 class DebuggerViewController: UIViewController, DebuggerViewable {
     
-    private var debuggerButton: DebuggerUIButton!
+    var debuggerButton: DebuggerUIButton!
     var debuggerScallableView: DebuggerScallableView?
     
     var presenter: DebuggerPresenter!
