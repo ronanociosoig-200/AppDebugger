@@ -1,7 +1,7 @@
 Pod::Spec.new do |s|
   s.name             = 'StanwoodDebugger'
-  s.version          = '1.3'
-  s.summary          = 'Stanwood debugger provide live view debugging'
+  s.version          = '1.4'
+  s.summary          = 'The debugger provides live view debugging'
   s.description      = <<-DESC
     Live debugger for:
         1. Analytics
@@ -11,10 +11,10 @@ Pod::Spec.new do |s|
         5. Errors
                        DESC
 
-  s.homepage         = 'https://github.com/stanwood/Stanwood_Debugger_iOS'
+  s.homepage         = 'https://github.com/ronanociosoig-200/AppDebugger_iOS'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'stanwood' => 'ios.frameworks@stanwood.io' }
-  s.source           = { :git => 'https://github.com/stanwood/Stanwood_Debugger_iOS.git', :tag => s.version.to_s }
+  s.source           = { :git => 'https://github.com/ronanociosoig-200/AppDebugger.git', :tag => s.version.to_s }
   
   s.swift_version = '5.0'
   s.ios.deployment_target = '10.0'
