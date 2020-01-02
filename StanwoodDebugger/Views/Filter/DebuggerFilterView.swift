@@ -34,10 +34,11 @@ protocol DebuggerFilterViewDelegate: class {
 class DebuggerFilterView: UIView {
     
     enum DebuggerFilter {
-        case analytics, error(item: Recordable?), crashes(item: Recordable?), networking(item: Recordable?), logs
+        case analytics, error(item: Recordable?), crashes(item: Recordable?), networking(item: Recordable?), logs, screenLauncher
         
         var label: String {
             switch self {
+            case .screenLauncher: return "   Launcher   "
             case .analytics: return "   Analytics   "
             case .error: return "   Errors   "
             case .logs: return "   Logs   "
@@ -48,6 +49,7 @@ class DebuggerFilterView: UIView {
         
         var icon: DebuggerIconLabel.DebuggerIcons {
             switch self {
+            case .screenLauncher: return .launcher
             case .analytics: return .analytics
             case .networking: return .networking
             case .error: return .error
@@ -56,7 +58,7 @@ class DebuggerFilterView: UIView {
             }
         }
         
-        static var allFilters: [DebuggerFilter] = [.analytics, .networking(item: nil), .error(item: nil), .crashes(item: nil), .logs]
+        static var allFilters: [DebuggerFilter] = [.screenLauncher, .analytics, .networking(item: nil), .error(item: nil), .crashes(item: nil), .logs]
     }
     
     var currnetFilter: DebuggerFilter = .analytics

@@ -206,6 +206,7 @@ class DebuggerUIButton: UIButton {
         
         addedItems.forEach({
             switch $0.type {
+            case .screenLauncher: animate(.analytics)
             case .analytics: animate(.analytics)
             case .networking: animate(.networking)
             case .error: animate(.error)

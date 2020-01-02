@@ -33,11 +33,12 @@ typealias DoneCompletion = (Bool) -> Void
 class DebuggerIconLabel: UILabel {
     
     enum DebuggerIcons: String, CaseIterable {
-        case analytics = "👻"
+        case analytics = "🩺"
         case error = "⚠️"
         case logs = "✏️"
-        case crashes = "📱"
-        case networking = "📶"
+        case crashes = "💥"
+        case networking = "⚡️"
+        case launcher = "🚀"
         
         private var duration: TimeInterval {
             switch self {
@@ -46,6 +47,7 @@ class DebuggerIconLabel: UILabel {
             case .error: return 6
             case .logs: return 4
             case .crashes: return 7
+            case .launcher: return 5
             }
         }
         

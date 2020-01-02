@@ -39,6 +39,7 @@ class DebuggerData {
     var logItems: LogItems
     var crashItems: CrashItems
     var errorItems: ErrorItems
+    var screenLauncherItems: ScreenLauncherItems
     
     private lazy var formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -82,6 +83,8 @@ class DebuggerData {
         } else {
             crashItems = CrashItems(items: [])
         }
+        
+        screenLauncherItems = ScreenLauncherItems(items: [])
         
         NotificationCenter.default.addObservers(self, observers:
             Stanwood.Observer(selector: #selector(didReceiveAnalyticsItem(_:)), name: .DebuggerDidReceiveAnalyticsItem),
@@ -223,6 +226,8 @@ class DebuggerData {
             if DebuggerSettings.shouldStoreNetworkingData {
                 try? Stanwood.Storage.store(networkingItems, to: .documents(customDirectory: nil), as: .json, withName: NetworkItems.fileName)
             }
+        case .launcher:
+            break
         }
     }
 }

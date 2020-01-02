@@ -121,12 +121,14 @@ class DebuggerCoordinator {
     // MARK: - Settings
     
     enum ActionSheet: String {
-        case analytics, allData, settings, networking, logs, errors, crashes
+        case analytics, allData, settings, networking, logs, errors, crashes, screenLauncher
         
         var value: String {
             switch self {
             case .allData:
                 return "all"
+            case .screenLauncher:
+                return "launcher"
             case .settings, .analytics, .errors, .logs, .networking, .crashes:
                 return rawValue
             }
@@ -134,7 +136,7 @@ class DebuggerCoordinator {
         
         var title: String {
             switch self {
-            case .allData, .analytics, .errors, .logs, .networking, .crashes:
+            case .allData, .analytics, .errors, .logs, .networking, .crashes, .screenLauncher:
                 return "Would you like to remove \(value) data?"
             case .settings:
                 return "Reset to default settings?"

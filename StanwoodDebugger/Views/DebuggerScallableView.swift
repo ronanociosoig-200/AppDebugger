@@ -107,11 +107,17 @@ class DebuggerScallableView: UIView {
     
     func configureTableView(with modelCollection: ModelCollection?) {
 
-        tableView.register(cells: ErrorCell.self, AnalyticsCell.self, NetworkingCell.self, LogCell.self, CrashCell.self, bundle: Bundle.debuggerBundle())
+        tableView.register(cells: ErrorCell.self,
+                           AnalyticsCell.self,
+                           NetworkingCell.self,
+                           LogCell.self,
+                           CrashCell.self,
+                           ScreenLauncherCell.self,
+                           bundle: Bundle.debuggerBundle())
 
         tableView.estimatedRowHeight = 75
         tableView.rowHeight = UITableView.automaticDimension
-        tableView.backgroundColor = UIColor.white.withAlphaComponent(0.8)
+        tableView.backgroundColor = UIColor.white
         tableView.tableFooterView = UIView(frame: .zero)
         
         if (modelCollection?.numberOfItems ?? 0) == 0 {

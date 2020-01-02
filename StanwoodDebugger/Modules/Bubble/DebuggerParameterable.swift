@@ -34,6 +34,7 @@ protocol DebuggerParameterable {
 extension DebuggerParamaters: DebuggerParameterable {
     func getDeguggerItems(for filter: DebuggerFilterView.DebuggerFilter) -> ModelCollection? {
         switch filter {
+        case .screenLauncher: return appData.screenLauncherItems
         case .analytics: return appData.analyticsItems
         case .networking: return appData.networkingItems
         case .error: return appData.errorItems
