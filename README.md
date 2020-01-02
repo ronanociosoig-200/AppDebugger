@@ -1,5 +1,5 @@
 
-# StanwoodDebugger framework
+#AppDebugger
 
 [![Swift Version](https://img.shields.io/badge/Swift-5.x-orange.svg)]()
 [![iOS 10+](https://img.shields.io/badge/iOS-10+-EB7943.svg)]() [![Maintainability](https://api.codeclimate.com/v1/badges/1a2096a936f5ea9548ac/maintainability)](https://codeclimate.com/github/stanwood/Stanwood_Debugger_iOS/maintainability)
