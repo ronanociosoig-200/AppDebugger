@@ -8,6 +8,11 @@
 import UIKit
 
 public struct LauncherItem {
-    let title: String
-    let viewControllerName: String
+    public let title: String
+    public let viewControllerName: String
+    
+    public init(title: String, viewControllerName: String) {
+        self.title = title
+        self.viewControllerName = viewControllerName
+    }
 }
