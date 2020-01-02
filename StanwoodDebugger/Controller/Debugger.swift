@@ -126,7 +126,7 @@ public class StanwoodDebugger: Debugging {
      ```swift
      let configuration = URLSessionConfiguration.waitsForConnectivity
      
-     debugger.regsiter(custom: configuration)
+     debugger.register(custom: configuration)
      
      /// Use with URLSession || any networking libraries such as Alamofire and Moya
      let session = URLSession(configuration: configuration)
@@ -136,7 +136,7 @@ public class StanwoodDebugger: Debugging {
      
      - SeeAlso: `DebuggerNetworking`
      */
-    public func regsiter(custom configuration: URLSessionConfiguration) {
+    public func register(custom configuration: URLSessionConfiguration) {
         DebuggerNetworking.register(custom: configuration)
     }
     
