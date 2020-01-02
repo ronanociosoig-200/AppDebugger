@@ -133,10 +133,10 @@ class DebuggerUIButton: UIButton {
         
         layer.cornerRadius = Positions.buttonSize.width / 2
         
-        let image = UIImage(named: "icon_virus", in: Bundle.debuggerBundle(), compatibleWith: nil)
-        setImage(image, for: .normal)
-        tintColor = .white
-        setTitleColor(.white, for: .normal)
+        // let image = UIImage(named: "icon_virus", in: Bundle.debuggerBundle(), compatibleWith: nil)
+        // setImage(image, for: .normal)
+        // tintColor = .white
+        // setTitleColor(.white, for: .normal)
         backgroundColor = StanwoodDebugger.Style.tintColor
         
         let pan = UIPanGestureRecognizer(target: self, action: #selector(panning(_:)))
