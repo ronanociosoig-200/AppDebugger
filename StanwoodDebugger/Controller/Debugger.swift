@@ -140,6 +140,10 @@ public class StanwoodDebugger: Debugging {
         DebuggerNetworking.register(custom: configuration)
     }
     
+    public func setLauncherItems(items: [LauncherItem]) {
+        appData.launcherItems = items
+    }
+    
     @objc func applicationDidEnterBackground() {
         appData.save()
     }

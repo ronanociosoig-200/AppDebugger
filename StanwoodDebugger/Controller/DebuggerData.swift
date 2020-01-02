@@ -40,6 +40,7 @@ class DebuggerData {
     var crashItems: CrashItems
     var errorItems: ErrorItems
     var screenLauncherItems: ScreenLauncherItems
+    var launcherItems = [LauncherItem]()
     
     private lazy var formatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -84,7 +85,18 @@ class DebuggerData {
             crashItems = CrashItems(items: [])
         }
         
-        screenLauncherItems = ScreenLauncherItems(items: [])
+        if launcherItems.count > 0 {
+            var items = [ScreenLauncherItem]()
+            for item in launcherItems {
+                let screenLuancherItem = ScreenLauncherItem(title: item.title, viewControllerName: item.viewController)
+                items.append(screenLuancherItem)
+            }
+            screenLauncherItems = ScreenLauncherItems(items: items)
+        } else {
+            screenLauncherItems = ScreenLauncherItems(items: [])
+        }
+        
+        
         
         NotificationCenter.default.addObservers(self, observers:
             Stanwood.Observer(selector: #selector(didReceiveAnalyticsItem(_:)), name: .DebuggerDidReceiveAnalyticsItem),

@@ -19,17 +19,3 @@ class ScreenLauncherItems: Elements<ScreenLauncherItem> {
         return ScreenLauncherCell.self
     }
 }
-
-
-//class LogItems: Elements<LogItem> {
-//
-//    static let fileName: String = "log_items"
-//
-//    func removeAll() {
-//        items.removeAll()
-//    }
-//
-//    override func cellType(forItemAt indexPath: IndexPath) -> Fillable.Type? {
-//        return LogCell.self
-//    }
-//}

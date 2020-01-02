@@ -1,14 +1,13 @@
 //
-//  ScreenLauncherItem.swift
+//  LauncherItem.swift
 //  Pods-StanwoodDebugger_Example
 //
 //  Created by Ronan O'Ciosoig on 02/01/2020.
 //
 
-import Foundation
-import SourceModel
+import UIKit
 
-struct ScreenLauncherItem: Typeable, Codable {
+public struct LauncherItem {
     let title: String
     let viewControllerName: String
 }
