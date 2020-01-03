@@ -10,5 +10,4 @@ import SourceModel
 
 struct ScreenLauncherItem: Typeable, Codable {
     let title: String
-    let viewControllerName: String
 }

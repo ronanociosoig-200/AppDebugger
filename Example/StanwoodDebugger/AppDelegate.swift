@@ -32,7 +32,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     }
     
     private func makeLaunchItems() -> [LauncherItem] {
-        let item = LauncherItem(title: "Success Template Cases", viewControllerName: "SuccessCaseTemplateTableViewController")
+        let viewController = LaunchTestScreensTableViewController()
+        let item = LauncherItem(title: "Launcher", viewController: viewController)
         return [item]
     }
 }

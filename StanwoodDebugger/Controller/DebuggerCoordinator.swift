@@ -32,6 +32,8 @@ class DebuggerCoordinator {
     private let actionable: DebuggerActions
     private let paramaterable: DebuggerParamaters
     
+    var appData: DebuggerData?
+    
     // need a better solution for it
     func currentViewController(base: UIViewController?) -> UIViewController? {
         if let nav = base as? UINavigationController {
@@ -80,6 +82,19 @@ class DebuggerCoordinator {
         window.rootViewController?.present(tabBarController, animated: animated, completion: completion)
     }
     
+    func present(_ item: ScreenLauncherItem) {
+        guard let appData = appData else { return }
+        
+        for launcherItem in appData.launcherItems {
+            if launcherItem.title == item.title {
+                let viewController = launcherItem.viewController
+                viewController.title = launcherItem.title
+                let navigationController = currentViewController(base: window.rootViewController)?.navigationController
+                navigationController?.pushViewController(viewController, animated: true)
+            }
+        }
+    }
+    
     // MARK: - Networking
     func present(_ item: Recordable) {
         if let item = item as? NetworkItem {
@@ -88,6 +103,32 @@ class DebuggerCoordinator {
             present(item)
         } else if let item = item as? CrashItem {
             present(item)
+        }
+    }
+    
+    func presentLauncher(_ item: ScreenLauncherItem, animated: Bool = false, completion: @escaping Completion) {
+        guard let appData = appData else { return }
+        
+        for launcherItem in appData.launcherItems {
+            if launcherItem.title == item.title {
+                let viewController = launcherItem.viewController
+                viewController.title = launcherItem.title
+                
+                let navigationController = UINavigationController(rootViewController: viewController)
+                
+                // Settings Nav Controller
+                let title = "Debugger"
+                let settingsControllers = SettingsWireframe.makeViewController(withTitle: title)
+                SettingsWireframe.prepare(settingsControllers.viewController, with: actionable, paramaterable)
+
+                let tabBarController = DebuggerUITabBarController()
+                tabBarController.setViewControllers([
+                    navigationController,
+                    settingsControllers.navigationController], animated: false)
+                tabBarController.modalPresentationStyle = .overFullScreen
+                window.rootViewController?.present(tabBarController, animated: animated, completion: completion)
+                
+            }
         }
     }
     

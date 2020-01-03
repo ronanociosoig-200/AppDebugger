@@ -106,6 +106,10 @@ extension DebuggerViewController: DebuggerScallableViewDelegate {
         presenter.presentDetailView(with: filter, completion: completion)
     }
     
+//    func scallableViewIsExpanding(with item: ScreenLauncherItem, completion: @escaping Completion) {
+//        presenter.presentDetailView(with: item, completion: completion)
+//    }
+    
     func scallableViewDidDismiss(whileExpanding isExpanding: Bool) {
         presenter.debugger.isDisplayed = isExpanding
         debuggerScallableView?.removeFromSuperview()

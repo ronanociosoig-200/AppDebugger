@@ -31,6 +31,7 @@ typealias Completion = () -> Void
 
 protocol DebuggerScallableViewDelegate: class {
     func scallableViewIsExpanding(with filter: DebuggerFilterView.DebuggerFilter, completion: @escaping Completion)
+    // func scallableViewIsExpanding(with item: ScreenLauncherItem, completion: @escaping Completion)
     func scallableViewDidDismiss(whileExpanding: Bool)
 }
 
@@ -165,6 +166,24 @@ class DebuggerScallableView: UIView {
         expand(with: nil)
     }
     
+    func expandView(with launcherItem: ScreenLauncherItem) {
+        buttons.hide(duration: 0.3)
+        UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
+            self.frame = UIApplication.shared.keyWindow?.frame ?? .zero
+            self.backgroundColor = UIColor.white
+        }) { _ in
+            self.views.hide()
+            
+            let filter = DebuggerFilterView.DebuggerFilter.screenLauncher(item: launcherItem)
+            
+            self.delegate?.scallableViewIsExpanding(with: filter) {
+                DispatchQueue.main.async { [weak self] in
+                    self?.dismiss(fromExpandable: true)
+                }
+            }
+        }
+    }
+    
     private func expand(with item: Recordable?) {
         buttons.hide(duration: 0.3)
         UIView.animate(withDuration: 0.5, delay: 0.0, options: .curveEaseInOut, animations: {
@@ -189,6 +208,9 @@ class DebuggerScallableView: UIView {
 }
 
 extension DebuggerScallableView: ItemPresentable {
+    func present(item: ScreenLauncherItem) {
+        expandView(with: item)
+    }
     
     func present(item: Recordable) {
         expand(with: item)

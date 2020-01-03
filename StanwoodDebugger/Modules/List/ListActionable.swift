@@ -29,6 +29,7 @@ import Foundation
 protocol ListActionable {
     func refresh(withDelay delay: DispatchTimeInterval)
     func present(item: Recordable)
+    func present(item: ScreenLauncherItem)
 }
 
 extension DebuggerActions: ListActionable {
@@ -38,6 +39,10 @@ extension DebuggerActions: ListActionable {
     }
     
     func present(item: Recordable) {
+        coordinator?.present(item)
+    }
+    
+    func present(item: ScreenLauncherItem) {
         coordinator?.present(item)
     }
 }

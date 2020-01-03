@@ -9,10 +9,10 @@ import UIKit
 
 public struct LauncherItem {
     public let title: String
-    public let viewControllerName: String
+    public let viewController: UIViewController
     
-    public init(title: String, viewControllerName: String) {
+    public init(title: String, viewController: UIViewController) {
         self.title = title
-        self.viewControllerName = viewControllerName
+        self.viewController = viewController
     }
 }

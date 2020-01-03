@@ -28,6 +28,7 @@ import Foundation
 
 protocol ItemPresentable: class {
     func present(item: Recordable)
+    func present(item: ScreenLauncherItem)
 }
 
 class DebuggerPresenter {
@@ -47,6 +48,10 @@ class DebuggerPresenter {
     func presentDetailView(with filter: DebuggerFilterView.DebuggerFilter, completion: @escaping Completion) {
         actionable.presentListView(with: filter, completion: completion)
     }
+    
+//    func presentDetailView(with item: ScreenLauncherItem, completion: @escaping Completion) {
+//        actionable.presentListView(with: item, completion: completion)
+//    }
     
     func presentScaled(_ view: DebuggerScallableView) {
         view.presenter = self

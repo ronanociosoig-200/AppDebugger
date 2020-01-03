@@ -28,7 +28,6 @@ import Foundation
 import SourceModel
 
 class ListDelegate: TableDelegate {
- 
     weak var presenter: ItemPresentable?
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -42,6 +41,9 @@ class ListDelegate: TableDelegate {
             let item = cell.item {
             presenter?.present(item: item)
         } else if let cell = tableView.cellForRow(at: indexPath) as? CrashCell,
+            let item = cell.item {
+            presenter?.present(item: item)
+        } else if let cell = tableView.cellForRow(at: indexPath) as? ScreenLauncherCell,
             let item = cell.item {
             presenter?.present(item: item)
         }

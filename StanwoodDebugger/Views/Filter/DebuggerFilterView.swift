@@ -34,7 +34,7 @@ protocol DebuggerFilterViewDelegate: class {
 class DebuggerFilterView: UIView {
     
     enum DebuggerFilter {
-        case analytics, error(item: Recordable?), crashes(item: Recordable?), networking(item: Recordable?), logs, screenLauncher
+        case analytics, error(item: Recordable?), crashes(item: Recordable?), networking(item: Recordable?), logs, screenLauncher(item: ScreenLauncherItem?)
         
         var label: String {
             switch self {
@@ -58,7 +58,7 @@ class DebuggerFilterView: UIView {
             }
         }
         
-        static var allFilters: [DebuggerFilter] = [.screenLauncher, .analytics, .networking(item: nil), .error(item: nil), .crashes(item: nil), .logs]
+        static var allFilters: [DebuggerFilter] = [.screenLauncher(item: nil), .analytics, .networking(item: nil), .error(item: nil), .crashes(item: nil), .logs]
     }
     
     var currnetFilter: DebuggerFilter = .analytics
