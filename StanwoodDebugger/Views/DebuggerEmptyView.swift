@@ -31,8 +31,11 @@ class DebuggerEmptyView: UIView {
     @IBOutlet private weak var iconLabel: UILabel!
     @IBOutlet private weak var subtitleLabel: UILabel!
     
+    let defaultSubTitle = "Waiting for logs... ¯\\_(ツ)_/¯"
+    let launcherSubTitle = "No launcher screens defined yet."
+    
     func setLabel(with filter: DebuggerFilterView.DebuggerFilter) {
         iconLabel.text = filter.icon.rawValue
-        subtitleLabel.text = "Waiting for logs... ¯\\_(ツ)_/¯"
+        subtitleLabel.text = defaultSubTitle
     }
 }
