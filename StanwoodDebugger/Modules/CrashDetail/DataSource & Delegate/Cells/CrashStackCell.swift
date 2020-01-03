@@ -15,8 +15,8 @@ class CrashStackCell: UITableViewCell, Fillable {
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.layoutSubviews()
-        self.textView.addInnerShadow(onSide: .left, shadowColor: .white)
-        self.textView.addInnerShadow(onSide: .right, shadowColor: .white)
+        self.textView.addInnerShadow(to: .left, color: .white)
+        self.textView.addInnerShadow(to: .right, color: .white)
     }
 
     func fill(with model: Model?) {

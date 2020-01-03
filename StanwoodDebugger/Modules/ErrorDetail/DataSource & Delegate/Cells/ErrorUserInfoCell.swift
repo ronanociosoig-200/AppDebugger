@@ -39,7 +39,7 @@ class ErrorUserInfoCell: UITableViewCell, Fillable, Delegateble {
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.layoutSubviews()
-        self.userInfoTextView.addInnerShadow(onSide: .all)
+        self.userInfoTextView.addInnerShadow(to: .allSides)
         
     }
     

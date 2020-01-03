@@ -29,6 +29,6 @@ import Foundation
 extension String {
     
     static var defaultValue: String {
-        return "{nil}"
+        return "Nil"
     }
 }

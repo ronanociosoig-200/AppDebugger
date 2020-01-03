@@ -32,60 +32,60 @@ extension UIView {
     
     // different inner shadow styles
     enum InnerShadowSide: String {
-        case all, left, right, top, bottom, topAndLeft, topAndRight, bottomAndLeft, bottomAndRight, exceptLeft, exceptRight, exceptTop, exceptBottom
+        case allSides, left, right, top, bottom, topAndLeft, topAndRight, bottomAndLeft, bottomAndRight, exceptLeft, exceptRight, exceptTop, exceptBottom
     }
     
     // define function to add inner shadow
     @discardableResult
-    func addInnerShadow(onSide: InnerShadowSide, shadowColor: UIColor = .black, shadowSize: CGFloat = 2, cornerRadius: CGFloat = 0.0, shadowOpacity: Float = 0.35) -> CAShapeLayer {
+    func addInnerShadow(to: InnerShadowSide, color: UIColor = .black, radius: CGFloat = 2, cornerRadius: CGFloat = 0.0, opacity: Float = 0.35) -> CAShapeLayer {
         // define and set a shaow layer
 
-        let layerName = "shadow\(onSide.rawValue)"
+        let layerName = "shadow\(to.rawValue)"
         let shadowLayer = CAShapeLayer()
         shadowLayer.name = layerName
         shadowLayer.frame = bounds
-        shadowLayer.shadowColor = shadowColor.cgColor
+        shadowLayer.shadowColor = color.cgColor
         shadowLayer.shadowOffset = CGSize(width: 0.0, height: 0.0)
-        shadowLayer.shadowOpacity = shadowOpacity
-        shadowLayer.shadowRadius = shadowSize
+        shadowLayer.shadowOpacity = opacity
+        shadowLayer.shadowRadius = radius
         shadowLayer.fillRule = .evenOdd
         
         // define shadow path
         let shadowPath = CGMutablePath()
         
         // define outer rectangle to restrict drawing area
-        let insetRect = bounds.insetBy(dx: -shadowSize * 2.0, dy: -shadowSize * 2.0)
+        let insetRect = bounds.insetBy(dx: -radius * 2.0, dy: -radius * 2.0)
         
         // define inner rectangle for mask
         let innerFrame: CGRect = { () -> CGRect in
-            switch onSide
+            switch to
             {
-            case .all:
+            case .allSides:
                 return CGRect(x: 0.0, y: 0.0, width: frame.size.width, height: frame.size.height)
             case .left:
-                return CGRect(x: 0.0, y: -shadowSize * 2.0, width: frame.size.width + shadowSize * 2.0, height: frame.size.height + shadowSize * 4.0)
+                return CGRect(x: 0.0, y: -radius * 2.0, width: frame.size.width + radius * 2.0, height: frame.size.height + radius * 4.0)
             case .right:
-                return CGRect(x: -shadowSize * 2.0, y: -shadowSize * 2.0, width: frame.size.width + shadowSize * 2.0, height: frame.size.height + shadowSize * 4.0)
+                return CGRect(x: -radius * 2.0, y: -radius * 2.0, width: frame.size.width + radius * 2.0, height: frame.size.height + radius * 4.0)
             case .top:
-                return CGRect(x: -shadowSize * 2.0, y: 0.0, width: frame.size.width + shadowSize * 4.0, height: frame.size.height + shadowSize * 2.0)
+                return CGRect(x: -radius * 2.0, y: 0.0, width: frame.size.width + radius * 4.0, height: frame.size.height + radius * 2.0)
             case.bottom:
-                return CGRect(x: -shadowSize * 2.0, y: -shadowSize * 2.0, width: frame.size.width + shadowSize * 4.0, height: frame.size.height + shadowSize * 2.0)
+                return CGRect(x: -radius * 2.0, y: -radius * 2.0, width: frame.size.width + radius * 4.0, height: frame.size.height + radius * 2.0)
             case .topAndLeft:
-                return CGRect(x: 0.0, y: 0.0, width: frame.size.width + shadowSize * 2.0, height: frame.size.height + shadowSize * 2.0)
+                return CGRect(x: 0.0, y: 0.0, width: frame.size.width + radius * 2.0, height: frame.size.height + radius * 2.0)
             case .topAndRight:
-                return CGRect(x: -shadowSize * 2.0, y: 0.0, width: frame.size.width + shadowSize * 2.0, height: frame.size.height + shadowSize * 2.0)
+                return CGRect(x: -radius * 2.0, y: 0.0, width: frame.size.width + radius * 2.0, height: frame.size.height + radius * 2.0)
             case .bottomAndLeft:
-                return CGRect(x: 0.0, y: -shadowSize * 2.0, width: frame.size.width + shadowSize * 2.0, height: frame.size.height + shadowSize * 2.0)
+                return CGRect(x: 0.0, y: -radius * 2.0, width: frame.size.width + radius * 2.0, height: frame.size.height + radius * 2.0)
             case .bottomAndRight:
-                return CGRect(x: -shadowSize * 2.0, y: -shadowSize * 2.0, width: frame.size.width + shadowSize * 2.0, height: frame.size.height + shadowSize * 2.0)
+                return CGRect(x: -radius * 2.0, y: -radius * 2.0, width: frame.size.width + radius * 2.0, height: frame.size.height + radius * 2.0)
             case .exceptLeft:
-                return CGRect(x: -shadowSize * 2.0, y: 0.0, width: frame.size.width + shadowSize * 2.0, height: frame.size.height)
+                return CGRect(x: -radius * 2.0, y: 0.0, width: frame.size.width + radius * 2.0, height: frame.size.height)
             case .exceptRight:
-                return CGRect(x: 0.0, y: 0.0, width: frame.size.width + shadowSize * 2.0, height: frame.size.height)
+                return CGRect(x: 0.0, y: 0.0, width: frame.size.width + radius * 2.0, height: frame.size.height)
             case .exceptTop:
-                return CGRect(x: 0.0, y: -shadowSize * 2.0, width: frame.size.width, height: frame.size.height + shadowSize * 2.0)
+                return CGRect(x: 0.0, y: -radius * 2.0, width: frame.size.width, height: frame.size.height + radius * 2.0)
             case .exceptBottom:
-                return CGRect(x: 0.0, y: 0.0, width: frame.size.width, height: frame.size.height + shadowSize * 2.0)
+                return CGRect(x: 0.0, y: 0.0, width: frame.size.width, height: frame.size.height + radius * 2.0)
             }
         }()
         

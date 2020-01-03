@@ -40,7 +40,7 @@ class NetworkHeadersCell: UITableViewCell, Fillable, Delegateble {
     override func layoutSubviews() {
         super.layoutSubviews()
         contentView.layoutSubviews()
-        self.textView.addInnerShadow(onSide: .all)
+        self.textView.addInnerShadow(to: .allSides)
     }
     
     func fill(with model: Model?) {

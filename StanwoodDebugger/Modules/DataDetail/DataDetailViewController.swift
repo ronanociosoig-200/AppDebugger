@@ -60,7 +60,7 @@ class DataDetailViewController: UIViewController {
     fileprivate func present(text: String, frame: CGRect) {
         let textView = UITextView(frame: frame)
         textView.backgroundColor = UIColor.lightGray.withAlphaComponent(0.25)
-        textView.addInnerShadow(onSide: .all)
+        textView.addInnerShadow(to: .allSides)
         textView.isUserInteractionEnabled = true
         textView.isScrollEnabled = true
         textView.isEditable = false
